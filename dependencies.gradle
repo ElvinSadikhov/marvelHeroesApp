@@ -1,0 +1,37 @@
+ext.versions = [
+        minSdk              : 21,
+        compileSdk          : 30,
+        versionCode         : 1,
+        versionName         : '1.0',
+
+        // basic
+        coreKtxVersion      : '1.10.0',
+        appcompatVersion    : '1.6.1',
+        materialVersion     : '1.9.0',
+        constrLayVersion    : '2.1.4',
+        junitVersion        : '4.13.2',
+        androidxJunitVersion: '1.1.5',
+        espressoCoreVersion : '3.5.1',
+
+        // navigation
+        navigationVersion   : '2.5.3',
+
+        // di
+        daggerHiltVersion   : '2.42',
+
+        // network
+        retrofitVersion     : '2.9.0',
+
+        // glide
+        glideVersion       : '4.14.2',
+
+        // liveData
+        liveDataVersion    : '2.6.1',
+
+        // coroutines
+        coroutinesVersion  : '1.6.4',
+
+        // viewModel
+        viewModelVersion   : '2.6.1',
+        activityVersion    : '1.7.1' 
+]

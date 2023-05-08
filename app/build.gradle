@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+apply from: '../dependencies.gradle'
+
+android {
+    namespace 'com.example.marvelheroesapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.marvelheroesapp"
+        minSdk versions.minSdk
+        targetSdk versions.compileSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'kotlin-kapt'
+apply plugin: "dagger.hilt.android.plugin"
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+    // for Hilt
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+        because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+    }
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+        because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+    }
+    // Basic
+    implementation "androidx.core:core-ktx:$versions.coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$versions.appcompatVersion"
+    implementation "com.google.android.material:material:$versions.materialVersoin"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constrLayVersion"
+    testImplementation "junit:junit:$versions.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCoreVersion"
+
+    // Additional dependencies
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigationVersion"
+
+    // Dagger-Hilt
+    implementation "com.google.dagger:hilt-android:$versions.daggerHiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.daggerHiltVersion"
+
+    // Retrofit-2
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofitVersion"
+    implementation "com.google.code.gson:gson:$versions.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitVersion"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.liveDataVersion"
+
+    // Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutinesVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$versions.viewModelVersion"
+    implementation "androidx.activity:activity-ktx:$versions.activityVersion"
+}
